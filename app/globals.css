@@ -5,12 +5,14 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 214, 219, 220;
+  --background-panel-rgb: 240, 240, 245;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 192, 192, 192;
     --background-rgb: 10, 10, 15;
+    --background-panel-rgb: 15, 23, 42;
   }
 }
 

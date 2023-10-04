@@ -77,10 +77,7 @@ export const ClipboardExec: React.FC<Props> = ({ target }) => {
   }, [isSuccess]);
   return (
     <div className="w-full h-3/4 flex flex-col items-center mt-auto">
-      <button
-        onClick={fireInsert}
-        className="bg-slate-900 rounded-xl w-1/2 h-1/4"
-      >
+      <button onClick={fireInsert} className="bg-panel rounded-xl w-1/2 h-1/4">
         コピー
       </button>
       <div
