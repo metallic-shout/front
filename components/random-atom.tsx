@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { makeShout } from "@/src/make-shout";
 import type { Atom } from "@/src/make-shout";
