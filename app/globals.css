@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind apply;
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -22,9 +23,23 @@ body {
 }
 
 * {
-  width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
+}
+
+div,
+main,
+textarea {
+  width: 100%;
+  height: 100%;
   display: flex;
+}
+
+p {
+  width: max-content;
+  height: max-content;
+}
+
+.wh-fit {
+  @apply w-max h-max;
 }

@@ -16,6 +16,9 @@ const config: Config = {
       backgroundColor: {
         panel: "rgb(var(--background-panel-rgb))",
       },
+      borderColor: {
+        primary: "rgb(var(--foreground-rgb))",
+      },
     },
   },
   plugins: [],
