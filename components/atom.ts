@@ -4,6 +4,7 @@ import { atom, useSetAtom, useAtomValue } from "jotai";
 
 type Listener = (shout: string) => void;
 
+const shoutAtom = atom(undefined as string | undefined);
 const listenerAtom = atom([] as Listener[]);
 const adder4listenAtom = atom(null, (get, set, update: Listener) => {
   const next = [...get(listenerAtom), update];
@@ -19,12 +20,16 @@ export const useShoutListener = (listener: Listener) => {
 
 export const useApplyShout = () => {
   const listeners = useAtomValue(listenerAtom);
+  const setShout = useSetAtom(shoutAtom);
   return useCallback(
     (shout: string) => {
+      setShout(shout);
       listeners.forEach((f) => {
         f(shout);
       });
     },
-    [listeners]
+    [listeners, setShout]
   );
 };
+
+export const useShoutContent = () => useAtomValue(shoutAtom);

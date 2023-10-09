@@ -1,6 +1,6 @@
 "use client";
 
-import { RandomAtom } from "./random-atom";
+import { RandomShout } from "./random-shout";
 import { Provider } from "jotai";
 
 interface Props {
@@ -11,7 +11,7 @@ export const ShoutLayout = ({ children }: Props) => {
   return (
     <>
       <Provider>
-        <RandomAtom />
+        <RandomShout />
         {children}
       </Provider>
     </>

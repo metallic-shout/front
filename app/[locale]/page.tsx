@@ -1,5 +1,4 @@
 import { CopyButton, ErrorMsg } from "@/components/copy-button";
-import { RandomAtom } from "@/components/random-atom";
 import { setStaticParamsLocale } from "next-international/server";
 import { ShoutLayout } from "@/components/shout-layout";
 import type { PageProps } from "./type";
