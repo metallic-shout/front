@@ -884,7 +884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"client-only@npm:0.0.1":
+"client-only@npm:0.0.1, client-only@npm:^0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
   checksum: 0c16bf660dadb90610553c1d8946a7fdfb81d624adea073b8440b7d795d5b5b08beb3c950c6a2cf16279365a3265158a236876d92bce16423c485c322d7dfaf8
@@ -2128,6 +2128,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"international-types@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "international-types@npm:0.8.0"
+  checksum: 3ee5d9c8bfd679af5629e697d4943a8fda1332c3660555b3b7bc01b1f07468233a2e32b1c5c38f1447baf054381c813e5592f4407b32f24bc6c12c2349deb338
+  languageName: node
+  linkType: hard
+
 "ip@npm:^2.0.0":
   version: 2.0.0
   resolution: "ip@npm:2.0.0"
@@ -2653,6 +2660,7 @@ __metadata:
     eslint-config-next: 13.5.4
     jotai: ^2.4.3
     next: 13.5.4
+    next-international: ^1.1.1
     postcss: ^8
     react: ^18
     react-dom: ^18
@@ -2854,6 +2862,17 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"next-international@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "next-international@npm:1.1.1"
+  dependencies:
+    client-only: ^0.0.1
+    international-types: ^0.8.0
+    server-only: ^0.0.1
+  checksum: c09e004e4d53610037ddd9fc9ba38cdc35ec0c07a9a06494b80be91d825d6ecab1e214c295187c5ea008ec7ea9fd098175d953b371c4dc8d4630323e2dc6371b
   languageName: node
   linkType: hard
 
@@ -3637,6 +3656,13 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
+  languageName: node
+  linkType: hard
+
+"server-only@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "server-only@npm:0.0.1"
+  checksum: c432348956641ea3f460af8dc3765f3a1bdbcf7a1e0205b0756d868e6e6fe8934cdee6bff68401a1dd49ba4a831c75916517a877446d54b334f7de36fa273e53
   languageName: node
   linkType: hard
 

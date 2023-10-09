@@ -29,10 +29,9 @@ body {
 
 div,
 main,
-textarea {
-  width: 100%;
-  height: 100%;
-  display: flex;
+textarea,
+button {
+  @apply w-full h-full flex justify-center items-center;
 }
 
 p {

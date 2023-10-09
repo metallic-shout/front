@@ -8,7 +8,6 @@ const nextConfig = {
     ATOM_OBJ: atomObj,
     PREFIX: string2doubleStruck("Punch  out  the  "),
   },
-  output: "export",
 };
 
 module.exports = nextConfig;

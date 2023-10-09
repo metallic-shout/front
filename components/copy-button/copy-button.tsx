@@ -1,21 +1,31 @@
-import { useCallback, useEffect, useTransition } from "react";
+"use client";
+
+import { useCallback, useEffect, useTransition, useRef } from "react";
 import { useMountedState } from "react-use";
-import { atom, useAtom } from "jotai";
-import { ErrorMsg } from "./error-msg";
+import { atom, useAtom, useSetAtom } from "jotai";
+import { isSuccessAtom } from "./atom";
+import { useShoutListener } from "../atom";
 
 interface Props {
-  target: React.MutableRefObject<string | null>;
+  children: [React.ReactNode, React.ReactNode];
 }
-
-const isSuccessAtom = atom(null as boolean | null);
 
 const isRunningAtom = atom(false);
 
-const useClipboard = (target: React.MutableRefObject<string | null>) => {
+const useShoutRef = () => {
+  const shoutRef = useRef(null as string | null);
+  useShoutListener((shout) => {
+    shoutRef.current = shout;
+  });
+  return shoutRef;
+};
+
+const useClipboard = () => {
   const [, startTransition] = useTransition();
   const isMounted = useMountedState();
   const [isRunning, setIsRunning] = useAtom(isRunningAtom);
-  const [isSuccess, setIsSuccess] = useAtom(isSuccessAtom);
+  const setIsSuccess = useSetAtom(isSuccessAtom);
+  const shout = useShoutRef();
 
   useEffect(() => {
     if (!isMounted()) return;
@@ -28,36 +38,39 @@ const useClipboard = (target: React.MutableRefObject<string | null>) => {
       return;
     }
     startTransition(async () => {
-      if (target.current == null) return;
+      if (shout.current == null) {
+        setIsSuccess(false);
+        setIsRunning(false);
+        return;
+      }
       const result = await navigator.clipboard
-        .writeText(target.current)
+        .writeText(shout.current)
         .then(() => true)
         .catch(() => false);
       setIsSuccess(result);
+      setIsRunning(false);
     });
-  }, [isRunning, isMounted, setIsSuccess, setIsRunning, target]);
+  }, [isRunning, isMounted, setIsSuccess, setIsRunning, shout]);
 
   const fireInsert = useCallback(() => {
     startTransition(() => {
       setIsRunning(true);
-      setIsSuccess(null);
+      setIsSuccess(undefined);
     });
   }, [setIsRunning, setIsSuccess]);
 
   return {
-    isSuccess,
     fireInsert,
   } as const;
 };
-
-export const CopyButton: React.FC<Props> = ({ target }) => {
-  const { isSuccess, fireInsert } = useClipboard(target);
+export const CopyButton: React.FC<Props> = ({ children }) => {
+  const { fireInsert } = useClipboard();
   return (
-    <div className="w-full h-3/4 flex-col items-center mt-auto">
+    <div className="w-full h-3/4 flex-col mt-auto">
       <button onClick={fireInsert} className="bg-panel rounded-xl w-1/2 h-1/4">
-        コピー
+        {children[0]}
       </button>
-      <ErrorMsg isSuccess={isSuccess} />
+      {children[1]}
     </div>
   );
 };
