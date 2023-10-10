@@ -1,10 +1,13 @@
 import { CopyButton, ErrorMsg } from "@/components/copy-button";
 import { setStaticParamsLocale } from "next-international/server";
 import { ShoutLayout } from "@/components/shout-layout";
-import type { PageProps } from "./type";
 import { getScopedI18n } from "@/locales/server";
 
-export default async function ShoutPage({ params: { locale } }: PageProps) {
+interface Props {
+  params: { locale: string };
+}
+
+export default async function ShoutPage({ params: { locale } }: Props) {
   setStaticParamsLocale(locale);
   const copyT = await getScopedI18n("copy");
 
@@ -18,7 +21,6 @@ export default async function ShoutPage({ params: { locale } }: PageProps) {
             <p>{copyT("error")}</p>
           </ErrorMsg>
         </CopyButton>
-        ,
       </ShoutLayout>
     </main>
   );

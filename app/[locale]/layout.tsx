@@ -1,10 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import conf from "@/locales/conf.json";
 import { Provider } from "./provider";
 import { getStaticParams } from "@/locales/server";
-import type { PageProps } from "./type";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +15,12 @@ export const generateStaticParams = () => {
   return getStaticParams();
 };
 
-export default function RootLayout({
-  children,
-  params: { locale },
-}: PageProps) {
+interface Props {
+  children: React.ReactNode;
+  params: { locale: string };
+}
+
+export default function RootLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale}>
       <body className={inter.className}>
