@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Metallic Shout",
   description: "All humans must shout metallic.",
+  manifest: "/manifest.webmanifest",
 };
 
 export const generateStaticParams = () => {

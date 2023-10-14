@@ -2,6 +2,12 @@
 
 const atomObj = require("./script/atom-map");
 const string2doubleStruck = require("./script/string2double-struck");
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
 
 const nextConfig = {
   env: {
@@ -10,4 +16,5 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+// module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
