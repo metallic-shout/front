@@ -12,7 +12,7 @@ export default async function ShoutPage({ params: { locale } }: Props) {
   const copyT = await getScopedI18n("copy");
 
   return (
-    <main className="w-screen h-screen">
+    <main className="w-screen h-screen flex-col">
       <ShoutLayout>
         <CopyButton key="ok-p">
           <p>{copyT("button")}</p>

@@ -1,0 +1,14 @@
+type Metal {
+  name: String!
+  elementCode: String!
+}
+
+type Metals {
+  all: [Metal!]!
+  select(index: Int!): Metal!
+  random: Metal!
+}
+
+type Query {
+  metals: Metals!
+}
