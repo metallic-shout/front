@@ -1,6 +1,12 @@
+type StyledMetal {
+  name: String!
+  board: String!
+}
+
 type Metal {
   name: String!
   elementCode: String!
+  styled: String!
 }
 
 type Metals {
@@ -11,4 +17,5 @@ type Metals {
 
 type Query {
   metals: Metals!
+  randomMetal: Metal!
 }

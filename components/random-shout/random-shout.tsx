@@ -2,12 +2,25 @@
 
 import { useCallback } from "react";
 import { useMount } from "react-use";
-import { shoutRandom } from "@/src/shout-random";
 import { TextView } from "./text-view";
 import { useApplyShout, useShoutContent } from "../atom";
+import { shoutRandom } from "@/src/shout-random";
+import { gql } from "@/gql/client";
+import { useQuery } from "@apollo/client";
+
+const GET_RANDOM_METAL = gql(`
+  query Getter{
+    metals{
+      random {
+        name
+      }
+    }
+  }
+`);
 
 export const RandomShout: React.FC = () => {
   const applyShout = useApplyShout();
+  const {} = useQuery(GET_RANDOM_METAL);
   const setRandomShout = useCallback(() => {
     applyShout(shoutRandom());
   }, [applyShout]);

@@ -20,6 +20,7 @@ export type Metal = {
   __typename?: 'Metal';
   elementCode: Scalars['String']['output'];
   name: Scalars['String']['output'];
+  styled: Scalars['String']['output'];
 };
 
 export type Metals = {
@@ -37,6 +38,7 @@ export type MetalsSelectArgs = {
 export type Query = {
   __typename?: 'Query';
   metals: Metals;
+  randomMetal: Metal;
 };
 
 
@@ -131,6 +133,7 @@ export type ResolversParentTypes = {
 export type MetalResolvers<ContextType = any, ParentType extends ResolversParentTypes['Metal'] = ResolversParentTypes['Metal']> = {
   elementCode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  styled?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -143,6 +146,7 @@ export type MetalsResolvers<ContextType = any, ParentType extends ResolversParen
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   metals?: Resolver<ResolversTypes['Metals'], ParentType, ContextType>;
+  randomMetal?: Resolver<ResolversTypes['Metal'], ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {

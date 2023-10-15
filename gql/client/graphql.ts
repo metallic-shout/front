@@ -20,6 +20,7 @@ export type Metal = {
   __typename?: 'Metal';
   elementCode: Scalars['String']['output'];
   name: Scalars['String']['output'];
+  styled: Scalars['String']['output'];
 };
 
 export type Metals = {
@@ -37,6 +38,7 @@ export type MetalsSelectArgs = {
 export type Query = {
   __typename?: 'Query';
   metals: Metals;
+  randomMetal: Metal;
 };
 
 export type GetterQueryVariables = Exact<{ [key: string]: never; }>;
