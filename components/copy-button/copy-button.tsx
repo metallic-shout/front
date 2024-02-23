@@ -8,7 +8,8 @@ import {
   useMemo,
 } from "react";
 import { useAtomCallback } from "jotai/utils";
-import { shoutAtom } from "../random-shout";
+import { shoutAtom } from "@/components/random-shout";
+import { useTimer } from "./use-timer";
 
 const LABEL_SHOW_DELEY = 1500;
 
@@ -25,14 +26,12 @@ const writeText2Clipboard = async (shout?: string) => {
 };
 
 const useClipboard = () => {
-  const timer = useRef(undefined as ReturnType<typeof setTimeout> | undefined);
   const [isSuccess, setIsSuccess] = useState(undefined as boolean | undefined);
+  const timer = useTimer(LABEL_SHOW_DELEY);
   const [, startTransition] = useTransition();
   const getShout = useAtomCallback(useCallback((get) => get(shoutAtom), []));
   const fireInsert = useCallback(async () => {
-    if (timer.current != null) {
-      clearTimeout(timer.current);
-    }
+    timer.reset();
     startTransition(() => {
       setIsSuccess(undefined);
     });
@@ -45,14 +44,12 @@ const useClipboard = () => {
     startTransition(() => {
       setIsSuccess(result);
     });
-    timer.current = setTimeout(() => {
+    timer.start(() => {
       startTransition(() => {
         setIsSuccess(undefined);
       });
-      console.log("hey!");
-      timer.current = undefined;
-    }, LABEL_SHOW_DELEY);
-  }, [getShout]);
+    });
+  }, [getShout, timer]);
 
   return {
     isSuccess,
