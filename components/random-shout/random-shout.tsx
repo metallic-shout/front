@@ -1,10 +1,11 @@
-import { shoutAtom } from "@/components/atom";
+"use client";
 import { useUpdateEffect } from "react-use";
-import { useSetAtom } from "jotai";
 import { TextView } from "./text-view";
 import { gql } from "@/gql/client";
-// import { useQuery, gql } from "@apollo/client";
 import { useQuery } from "@apollo/client";
+import { atom, useSetAtom } from "jotai";
+
+export const shoutAtom = atom(undefined as string | undefined);
 
 const GET_RANDOM_METAL = gql(`
   query Getter {
@@ -16,18 +17,17 @@ const GET_RANDOM_METAL = gql(`
   }
 `);
 
-export const RandomShout: React.FC = () => {
-  "use client";
+interface Props {
+  children: React.ReactNode;
+}
+export const RandomShout: React.FC<Props> = ({ children }) => {
+  const { loading, data, error, fetchMore } = useQuery(GET_RANDOM_METAL, {});
   const setAtom = useSetAtom(shoutAtom);
-  const { loading, data, fetchMore } = useQuery(GET_RANDOM_METAL, {});
-  // const setRandomShout = useCallback(() => {
-  // applyShout(shoutRandom());
-  // }, [applyShout]);
   useUpdateEffect(() => {
-    if (loading) return;
+    if (loading || error) return;
     setAtom(data?.metals.random.styled);
-  }, [loading]);
-  // const shout = useShoutContent();
+  }, [loading, error]);
+  console.log(error);
 
   return (
     <div className="px-10 h-1/3">
@@ -50,6 +50,7 @@ export const RandomShout: React.FC = () => {
           {data == null ? null : <TextView text={data.metals.random.styled} />}
         </div>
       </div>
+      <div data-visible={error == null ? undefined : ""}>{children}</div>
     </div>
   );
 };

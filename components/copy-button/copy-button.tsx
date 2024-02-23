@@ -1,19 +1,20 @@
 "use client";
-
-import { useCallback, useTransition } from "react";
-import { useSetAtom } from "jotai";
+import {
+  useCallback,
+  useTransition,
+  useState,
+  ReactNode,
+  useRef,
+  useMemo,
+} from "react";
 import { useAtomCallback } from "jotai/utils";
-import { isSuccessAtom } from "./atom";
-import { shoutAtom } from "../atom";
+import { shoutAtom } from "../random-shout";
+
+const LABEL_SHOW_DELEY = 1500;
 
 interface Props {
-  children: [React.ReactNode, React.ReactNode];
+  children: [ReactNode, ReactNode, ReactNode];
 }
-
-const useGetShout = () => {
-  const getShout = useAtomCallback(useCallback((get) => get(shoutAtom), []));
-  return getShout;
-};
 
 const writeText2Clipboard = async (shout?: string) => {
   if (navigator.clipboard == null) throw new Error("clipboard is not enabled.");
@@ -24,16 +25,18 @@ const writeText2Clipboard = async (shout?: string) => {
 };
 
 const useClipboard = () => {
+  const timer = useRef(undefined as ReturnType<typeof setTimeout> | undefined);
+  const [isSuccess, setIsSuccess] = useState(undefined as boolean | undefined);
   const [, startTransition] = useTransition();
-  const setIsSuccess = useSetAtom(isSuccessAtom);
-  const getShout = useGetShout();
-
+  const getShout = useAtomCallback(useCallback((get) => get(shoutAtom), []));
   const fireInsert = useCallback(async () => {
+    if (timer.current != null) {
+      clearTimeout(timer.current);
+    }
     startTransition(() => {
       setIsSuccess(undefined);
     });
-    const shout = getShout();
-    const result = await writeText2Clipboard(shout)
+    const result = await writeText2Clipboard(getShout())
       .then(() => true)
       .catch((e) => {
         console.log(e);
@@ -42,21 +45,39 @@ const useClipboard = () => {
     startTransition(() => {
       setIsSuccess(result);
     });
-  }, [getShout, setIsSuccess]);
+    timer.current = setTimeout(() => {
+      startTransition(() => {
+        setIsSuccess(undefined);
+      });
+      console.log("hey!");
+      timer.current = undefined;
+    }, LABEL_SHOW_DELEY);
+  }, [getShout]);
 
   return {
+    isSuccess,
     fireInsert,
   } as const;
 };
 
+const useVisibles = (isSuccess: boolean | undefined) => {
+  return useMemo(() => {
+    if (isSuccess == null) return [undefined, undefined];
+    if (isSuccess) return ["", undefined];
+    else return [undefined, ""];
+  }, [isSuccess]);
+};
+
 export const CopyButton: React.FC<Props> = ({ children }) => {
-  const { fireInsert } = useClipboard();
+  const { isSuccess, fireInsert } = useClipboard();
+  const visibles = useVisibles(isSuccess);
   return (
     <div className="w-full h-3/4 flex-col mt-auto">
       <button onClick={fireInsert} className="bg-panel rounded-xl w-1/2 h-1/4">
         {children[0]}
       </button>
-      {children[1]}
+      <div data-visible={visibles[0]}>{children[1]}</div>
+      <div data-visible={visibles[1]}>{children[2]}</div>
     </div>
   );
 };
