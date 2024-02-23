@@ -4,18 +4,27 @@ type StyledMetal {
 }
 
 type Metal {
+  id: Int!
   name: String!
   elementCode: String!
+}
+
+type DeleyMetal {
+  get: Metal!
   styled: String!
 }
 
+type DeleyMetals {
+  getAll: [Metal!]!
+  styledAll: [String!]!
+}
+
 type Metals {
-  all: [Metal!]!
-  select(index: Int!): Metal!
-  random: Metal!
+  all: DeleyMetals!
+  select(elementCode: String!): DeleyMetal!
+  random: DeleyMetal!
 }
 
 type Query {
   metals: Metals!
-  randomMetal: Metal!
 }

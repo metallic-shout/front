@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "metal_atom_element_code_index" ON "metal_atoms" ("element_code");

@@ -16,35 +16,52 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type DeleyMetal = {
+  __typename?: 'DeleyMetal';
+  get: Metal;
+  styled: Scalars['String']['output'];
+};
+
+export type DeleyMetals = {
+  __typename?: 'DeleyMetals';
+  getAll: Array<Metal>;
+  styledAll: Array<Scalars['String']['output']>;
+};
+
 export type Metal = {
   __typename?: 'Metal';
   elementCode: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
-  styled: Scalars['String']['output'];
 };
 
 export type Metals = {
   __typename?: 'Metals';
-  all: Array<Metal>;
-  random: Metal;
-  select: Metal;
+  all: DeleyMetals;
+  random: DeleyMetal;
+  select: DeleyMetal;
 };
 
 
 export type MetalsSelectArgs = {
-  index: Scalars['Int']['input'];
+  elementCode: Scalars['String']['input'];
 };
 
 export type Query = {
   __typename?: 'Query';
   metals: Metals;
-  randomMetal: Metal;
+};
+
+export type StyledMetal = {
+  __typename?: 'StyledMetal';
+  board: Scalars['String']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type GetterQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetterQuery = { __typename?: 'Query', metals: { __typename?: 'Metals', random: { __typename?: 'Metal', name: string } } };
+export type GetterQuery = { __typename?: 'Query', metals: { __typename?: 'Metals', random: { __typename?: 'DeleyMetal', styled: string } } };
 
 
-export const GetterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Getter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"random"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetterQuery, GetterQueryVariables>;
+export const GetterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Getter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"random"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"styled"}}]}}]}}]}}]} as unknown as DocumentNode<GetterQuery, GetterQueryVariables>;

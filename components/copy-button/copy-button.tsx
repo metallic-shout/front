@@ -1,20 +1,18 @@
 "use client";
 
-import { useCallback, useTransition, useRef } from "react";
+import { useCallback, useTransition } from "react";
 import { useSetAtom } from "jotai";
+import { useAtomCallback } from "jotai/utils";
 import { isSuccessAtom } from "./atom";
-import { useShoutListener } from "../atom";
+import { shoutAtom } from "../atom";
 
 interface Props {
   children: [React.ReactNode, React.ReactNode];
 }
 
-const useShoutRef = () => {
-  const shoutRef = useRef(undefined as string | undefined);
-  useShoutListener((shout) => {
-    shoutRef.current = shout;
-  });
-  return shoutRef;
+const useGetShout = () => {
+  const getShout = useAtomCallback(useCallback((get) => get(shoutAtom), []));
+  return getShout;
 };
 
 const writeText2Clipboard = async (shout?: string) => {
@@ -28,19 +26,23 @@ const writeText2Clipboard = async (shout?: string) => {
 const useClipboard = () => {
   const [, startTransition] = useTransition();
   const setIsSuccess = useSetAtom(isSuccessAtom);
-  const shout = useShoutRef();
+  const getShout = useGetShout();
 
   const fireInsert = useCallback(async () => {
     startTransition(() => {
       setIsSuccess(undefined);
     });
-    const result = await writeText2Clipboard(shout.current)
+    const shout = getShout();
+    const result = await writeText2Clipboard(shout)
       .then(() => true)
-      .catch(() => false);
+      .catch((e) => {
+        console.log(e);
+        return false;
+      });
     startTransition(() => {
       setIsSuccess(result);
     });
-  }, [setIsSuccess, shout]);
+  }, [getShout, setIsSuccess]);
 
   return {
     fireInsert,

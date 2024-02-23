@@ -16,29 +16,46 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type DeleyMetal = {
+  __typename?: 'DeleyMetal';
+  get: Metal;
+  styled: Scalars['String']['output'];
+};
+
+export type DeleyMetals = {
+  __typename?: 'DeleyMetals';
+  getAll: Array<Metal>;
+  styledAll: Array<Scalars['String']['output']>;
+};
+
 export type Metal = {
   __typename?: 'Metal';
   elementCode: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
-  styled: Scalars['String']['output'];
 };
 
 export type Metals = {
   __typename?: 'Metals';
-  all: Array<Metal>;
-  random: Metal;
-  select: Metal;
+  all: DeleyMetals;
+  random: DeleyMetal;
+  select: DeleyMetal;
 };
 
 
 export type MetalsSelectArgs = {
-  index: Scalars['Int']['input'];
+  elementCode: Scalars['String']['input'];
 };
 
 export type Query = {
   __typename?: 'Query';
   metals: Metals;
-  randomMetal: Metal;
+};
+
+export type StyledMetal = {
+  __typename?: 'StyledMetal';
+  board: Scalars['String']['output'];
+  name: Scalars['String']['output'];
 };
 
 
@@ -113,45 +130,71 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  DeleyMetal: ResolverTypeWrapper<DeleyMetal>;
+  DeleyMetals: ResolverTypeWrapper<DeleyMetals>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Metal: ResolverTypeWrapper<Metal>;
   Metals: ResolverTypeWrapper<Metals>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  StyledMetal: ResolverTypeWrapper<StyledMetal>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
+  DeleyMetal: DeleyMetal;
+  DeleyMetals: DeleyMetals;
   Int: Scalars['Int']['output'];
   Metal: Metal;
   Metals: Metals;
   Query: {};
   String: Scalars['String']['output'];
+  StyledMetal: StyledMetal;
 };
 
-export type MetalResolvers<ContextType = any, ParentType extends ResolversParentTypes['Metal'] = ResolversParentTypes['Metal']> = {
-  elementCode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+export type DeleyMetalResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleyMetal'] = ResolversParentTypes['DeleyMetal']> = {
+  get?: Resolver<ResolversTypes['Metal'], ParentType, ContextType>;
   styled?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type DeleyMetalsResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleyMetals'] = ResolversParentTypes['DeleyMetals']> = {
+  getAll?: Resolver<Array<ResolversTypes['Metal']>, ParentType, ContextType>;
+  styledAll?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MetalResolvers<ContextType = any, ParentType extends ResolversParentTypes['Metal'] = ResolversParentTypes['Metal']> = {
+  elementCode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type MetalsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Metals'] = ResolversParentTypes['Metals']> = {
-  all?: Resolver<Array<ResolversTypes['Metal']>, ParentType, ContextType>;
-  random?: Resolver<ResolversTypes['Metal'], ParentType, ContextType>;
-  select?: Resolver<ResolversTypes['Metal'], ParentType, ContextType, RequireFields<MetalsSelectArgs, 'index'>>;
+  all?: Resolver<ResolversTypes['DeleyMetals'], ParentType, ContextType>;
+  random?: Resolver<ResolversTypes['DeleyMetal'], ParentType, ContextType>;
+  select?: Resolver<ResolversTypes['DeleyMetal'], ParentType, ContextType, RequireFields<MetalsSelectArgs, 'elementCode'>>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   metals?: Resolver<ResolversTypes['Metals'], ParentType, ContextType>;
-  randomMetal?: Resolver<ResolversTypes['Metal'], ParentType, ContextType>;
+};
+
+export type StyledMetalResolvers<ContextType = any, ParentType extends ResolversParentTypes['StyledMetal'] = ResolversParentTypes['StyledMetal']> = {
+  board?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
+  DeleyMetal?: DeleyMetalResolvers<ContextType>;
+  DeleyMetals?: DeleyMetalsResolvers<ContextType>;
   Metal?: MetalResolvers<ContextType>;
   Metals?: MetalsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  StyledMetal?: StyledMetalResolvers<ContextType>;
 };
 

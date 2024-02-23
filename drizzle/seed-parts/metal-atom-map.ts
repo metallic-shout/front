@@ -1,4 +1,4 @@
-const atoms = [
+export const metalMap = [
   ["Li", "Lithium"],
   ["Be", "Beryllium"],
   ["Na", "Sodium"],
@@ -84,5 +84,3 @@ const atoms = [
   ["Bh", "Bohrium"],
   ["Hs", "Hassium"],
 ];
-
-module.exports = new Map(atoms);

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { I18nProviderClient } from "@/locales/client";
+import { I18nProviderClient } from "@/components/locales/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 type ProviderProps = {

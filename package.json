@@ -1,12 +1,15 @@
 {
   "name": "metallic-shout",
-  "packageManager": "yarn@3.6.3",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "sqlgen": "drizzle-kit generate:pg",
+    "migrate": "tsx ./drizzle/migrate.ts",
+    "seed": "tsx ./drizzle/seed.ts",
+    "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.0",
@@ -18,9 +21,10 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "drizzle-kit": "^0.20.14",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
-    "jotai": "^2.4.3",
+    "jotai": "^2",
     "next-international": "^1.1.1",
     "next-pwa": "^5.6.0",
     "postcss": "^8.4.31",
@@ -36,10 +40,14 @@
     "@apollo/server": "^4.9.4",
     "@as-integrations/next": "^2.0.2",
     "@graphql-typed-document-node/core": "^3.2.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.29.3",
     "encoding": "^0.1.13",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "next": "13.5.4",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "postgres": "^3.4.3",
+    "tsx": "^4.7.1"
   }
 }

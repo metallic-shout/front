@@ -1,6 +1,6 @@
 import { createI18nMiddleware } from "next-international/middleware";
 import type { NextRequest } from "next/server";
-import conf from "./locales/conf.json";
+import conf from "./components/locales/conf.json";
 
 const I18nMiddleware = createI18nMiddleware(conf);
 

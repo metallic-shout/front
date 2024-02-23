@@ -1,11 +1,7 @@
 import { Board } from "./board";
+import { string2DoubleStrucks } from "@/src/string2double-struck";
 
-export interface Atom {
-  originLength: number;
-  label: string;
-}
-
-const prefix = process.env.PREFIX as string;
+const prefix = string2DoubleStrucks("Punch  out  the  ");
 
 const leftBoard = Board.make4Param(
   `      ${prefix}`,
@@ -37,8 +33,8 @@ const getFrameLength = (charLength: number) => {
   return upper + lower;
 };
 
-export const makeShout = (atom: Atom) => {
-  const frameLength = getFrameLength(atom.originLength);
-  const center = Board.make4Param(atom.label, frameLength);
+export const makeShout = (label: string, originLength: number) => {
+  const frameLength = getFrameLength(originLength);
+  const center = Board.make4Param(label, frameLength);
   return leftBoard.merge(center, rightBoard).build();
 };

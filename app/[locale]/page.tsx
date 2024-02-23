@@ -1,7 +1,7 @@
 import { CopyButton, ErrorMsg } from "@/components/copy-button";
 import { setStaticParamsLocale } from "next-international/server";
 import { ShoutLayout } from "@/components/shout-layout";
-import { getScopedI18n } from "@/locales/server";
+import { getScopedI18n } from "@/components/locales/server";
 
 interface Props {
   params: { locale: string };
