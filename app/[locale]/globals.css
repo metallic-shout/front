@@ -42,3 +42,7 @@ p {
 .wh-fit {
   @apply w-max h-max;
 }
+
+.body_parts{
+  grid-auto-rows: min(calc(100% + 30vw - 10rem));
+}

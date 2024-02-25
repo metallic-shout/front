@@ -1,3 +1,5 @@
+"use server";
+
 import { ReactNode } from "react";
 import { BaseTopbar } from "./base-topbar";
 

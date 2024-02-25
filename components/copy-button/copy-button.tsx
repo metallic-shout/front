@@ -69,12 +69,16 @@ export const CopyButton: React.FC<Props> = ({ children }) => {
   const { isSuccess, fireInsert } = useClipboard();
   const visibles = useVisibles(isSuccess);
   return (
-    <div className="w-full h-3/4 flex-col mt-auto">
-      <button onClick={fireInsert} className="bg-panel rounded-xl w-1/2 h-1/4">
+    <>
+      <button onClick={fireInsert} className="bg-panel rounded-xl">
         {children[0]}
       </button>
-      <div data-visible={visibles[0]}>{children[1]}</div>
-      <div data-visible={visibles[1]}>{children[2]}</div>
-    </div>
+      <div className="w-0 h-0" data-visible={visibles[0]}>
+        {children[1]}
+      </div>
+      <div className="w-0 h-0" data-visible={visibles[1]}>
+        {children[2]}
+      </div>
+    </>
   );
 };

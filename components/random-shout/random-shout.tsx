@@ -27,10 +27,9 @@ export const RandomShout: React.FC<Props> = ({ children }) => {
     if (loading || error) return;
     setAtom(data?.metals.random.styled);
   }, [loading, error]);
-  console.log(error);
 
   return (
-    <div className="px-10 h-1/3">
+    <>
       <div
         className={`
           rounded-xl
@@ -50,7 +49,9 @@ export const RandomShout: React.FC<Props> = ({ children }) => {
           {data == null ? null : <TextView text={data.metals.random.styled} />}
         </div>
       </div>
-      <div data-visible={error == null ? undefined : ""}>{children}</div>
-    </div>
+      <div className="w-0 h-0" data-visible={error == null ? undefined : ""}>
+        {children}
+      </div>
+    </>
   );
 };

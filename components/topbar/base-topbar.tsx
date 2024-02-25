@@ -1,3 +1,4 @@
+"use server";
 import { ReactNode } from "react";
 const container = `
 absolute
@@ -20,7 +21,6 @@ interface Props {
 export const BaseTopbar = ({ children, color }: Props) => {
   return (
     <div className={` ${color} ${container}`}>
-      {/* <div className="absolute flex-col justify-start top-0 left-0 h-fit"> */}
       <p className={`py-1 h-max`}>{children}</p>
     </div>
   );

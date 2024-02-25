@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridAutoRows: {
+        "about-panel": " min(calc(100% + 30vw - 10rem))",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -18,6 +21,20 @@ const config: Config = {
       },
       borderColor: {
         primary: "rgb(var(--foreground-rgb))",
+      },
+      gridTemplateColumns: {
+        platte: "100% 0",
+      },
+      gradientColorStops: {
+        "about-panel": {
+          1: "#373b4b",
+          2: "#37414b",
+          3: "#374a4b",
+          4: "#374b44",
+        },
+      },
+      textColor: {
+        "theme-bg": "rgb(var(--background-rgb))",
       },
     },
   },
