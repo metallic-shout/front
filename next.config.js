@@ -19,6 +19,15 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/manifest.webmanifest/shout",
+  //       destination: "/locale/shout/aaa",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 // module.exports = nextConfig;

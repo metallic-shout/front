@@ -1,4 +1,5 @@
 {
   "locales": ["ja", "en"],
-  "defaultLocale": "ja"
+  "defaultLocale": "ja",
+  "urlMappingStrategy": "rewriteDefault"
 }
