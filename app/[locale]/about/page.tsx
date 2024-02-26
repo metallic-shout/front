@@ -1,5 +1,5 @@
 import { setStaticParamsLocale } from "next-international/server";
-import { getScopedI18n } from "@/components/locales/server";
+import { getScopedI18n, getStaticParams } from "@/components/locales/server";
 import { AboutPanel } from "@/components/about-panel";
 import { BiHappyHeartEyes } from "react-icons/bi";
 import { FaLaptopCode } from "react-icons/fa";
@@ -32,4 +32,8 @@ export default async function AboutPage({ params: { locale } }: Props) {
       </div>
     </div>
   );
+}
+
+export function generateStaticParams() {
+  return getStaticParams();
 }

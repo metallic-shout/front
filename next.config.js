@@ -19,15 +19,15 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/manifest.webmanifest/shout",
-  //       destination: "/locale/shout/aaa",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: "/:locale(ja|en)",
+        destination: "/:locale/shout",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 // module.exports = nextConfig;

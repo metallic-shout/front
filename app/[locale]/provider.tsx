@@ -14,10 +14,6 @@ const client = new ApolloClient({
   uri: "/api/graphql",
 });
 
-export const Provider = ({ locale, children }: ProviderProps) => {
-  return (
-    <I18nProviderClient locale={locale}>
-      <ApolloProvider client={client}>{children}</ApolloProvider>
-    </I18nProviderClient>
-  );
+export const Provider = ({ children }: ProviderProps) => {
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };

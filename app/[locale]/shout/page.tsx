@@ -44,6 +44,6 @@ export default async function ShoutPage({ params: { locale } }: Props) {
   );
 }
 
-// export function generateStaticParams() {
-//   return getStaticParams();
-// }
+export function generateStaticParams() {
+  return getStaticParams();
+}
