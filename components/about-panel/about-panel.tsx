@@ -17,11 +17,20 @@ from-transparent
 from-60%
 `;
 
+const gradientionUnder = `
+bg-gradient-to-tr
+from-transparent
+from-60%
+relative
+bottom-[2rem]
+h-10
+`;
+
 export const AboutPanel = ({ children: Child, text, gradient }: Props) => {
   return (
     <>
-      <div className="items-start">
-        <p>{text}</p>
+      <div className="items-start p-about-panel pl-5">
+        <p className="whitespace-pre-line">{text}</p>
       </div>
       <div className="relative h-full -z-10">
         <div className={`${gradiention} ${gradient}`}>
@@ -30,6 +39,8 @@ export const AboutPanel = ({ children: Child, text, gradient }: Props) => {
           </div>
         </div>
       </div>
+      <div className={`${gradientionUnder} ${gradient}`}></div>
+      <div></div>
     </>
   );
 };

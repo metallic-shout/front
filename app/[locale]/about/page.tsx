@@ -14,9 +14,9 @@ export default async function AboutPage({ params: { locale } }: Props) {
   const aboutT = await getScopedI18n("about");
 
   return (
-    <div className="flex-col gap-20">
+    <div className="flex-col gap-12">
       <h1>Metallic Shout</h1>
-      <div className="flex-col grid grid-cols-platte auto-rows-about-panel gap-y-16">
+      <div className="flex-col grid grid-cols-platte auto-rows-max gap-y-8">
         <AboutPanel gradient="to-about-panel-1" text={aboutT("text1")}>
           {BiHappyHeartEyes}
         </AboutPanel>
