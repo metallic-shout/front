@@ -78,7 +78,7 @@ export const WithToolBox = () => {
   return (
     <>
       {dialogElement}
-      <div className="fixed bottom-[10vh] right-[10vw] w-fit h-fit">
+      <div className="fixed bottom-[10vh] right-[10vw] w-fit h-fit z-10">
         <button
           className={`${buttonStyle}`}
           onClick={onClick}
