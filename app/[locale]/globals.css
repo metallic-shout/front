@@ -22,6 +22,10 @@ body {
   background: rgb(var(--background-rgb));
 }
 
+body:has(dialog[open]){
+  @apply overflow-hidden;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -30,7 +34,9 @@ body {
 div,
 main,
 textarea,
-button {
+button,
+li,
+ul{
   @apply w-full h-full flex justify-center items-center;
 }
 
@@ -43,6 +49,9 @@ p {
   @apply w-max h-max;
 }
 
-.body_parts{
-  grid-auto-rows: min(calc(100% + 30vw - 10rem));
+.remove-marker{
+  list-style: none;
+}
+.remove-marker::-webkit-details-marker{
+  display: none;
 }
