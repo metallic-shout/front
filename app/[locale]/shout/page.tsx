@@ -14,33 +14,22 @@ export default async function ShoutPage({ params: { locale } }: Props) {
   const copyT = await getScopedI18n("copy");
 
   return (
-    <>
-      <div className="w-screen h-screen flex-wrap-reverse">
-        <nav className="min-w-14">
-          <ul>
-            <li>
-              <p>ok!</p>
-            </li>
-          </ul>
-        </nav>
-        <Provider>
-          <main className="flex-wrap max-w-[93%]">
-            <div className="mx-1/4 max-w-xl max-h-56 px-8">
-              <RandomShout>
-                <ErrorTopbar>{"out!"}</ErrorTopbar>
-              </RandomShout>
-            </div>
-            <div className="max-w-52 mx-40 h-24">
-              <CopyButton>
-                {copyT("button")}
-                <OkTopbar>{copyT("ok")}</OkTopbar>
-                <ErrorTopbar>{copyT("error")}</ErrorTopbar>
-              </CopyButton>
-            </div>
-          </main>
-        </Provider>
-      </div>
-    </>
+    <Provider>
+      <main className="flex-wrap w-screen h-screen">
+        <div className="mx-1/4 max-w-xl max-h-56 px-8">
+          <RandomShout>
+            <ErrorTopbar>{"out!"}</ErrorTopbar>
+          </RandomShout>
+        </div>
+        <div className="max-w-52 mx-40 h-24">
+          <CopyButton>
+            {copyT("button")}
+            <OkTopbar>{copyT("ok")}</OkTopbar>
+            <ErrorTopbar>{copyT("error")}</ErrorTopbar>
+          </CopyButton>
+        </div>
+      </main>
+    </Provider>
   );
 }
 

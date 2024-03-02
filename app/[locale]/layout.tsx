@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Provider } from "./provider";
 import { getStaticParams } from "@/components/locales/server";
+import { WithToolBox } from "@/components/tool-box";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,10 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <Provider locale={locale}>{children}</Provider>
+        <Provider locale={locale}>
+          <WithToolBox />
+          {children}
+        </Provider>
       </body>
     </html>
   );
