@@ -18,9 +18,11 @@ const GET_RANDOM_METAL = gql(`
 `);
 
 interface Props {
-  children: React.ReactNode;
+  children: [React.ReactNode, React.ReactNode];
 }
-export const RandomShout: React.FC<Props> = ({ children }) => {
+export const RandomShout: React.FC<Props> = ({
+  children: [updateIcon, errorMsg],
+}) => {
   const { loading, data, error, fetchMore } = useQuery(GET_RANDOM_METAL, {});
   const setAtom = useSetAtom(shoutAtom);
   useUpdateEffect(() => {
@@ -37,20 +39,21 @@ export const RandomShout: React.FC<Props> = ({ children }) => {
           border
           overflow-hidden
           items-stretch
+          justify-start
           `}
       >
         <button
-          className="border-r border-fg-1 px-3 bg-panel w-max"
+          className="border-r border-fg-1 px-3 bg-panel w-max min-w-max"
           onClick={() => fetchMore({ query: GET_RANDOM_METAL })}
         >
-          →
+          {updateIcon}
         </button>
-        <div className="pl-5 justify-start">
+        <div className="pl-5 justify-start grow">
           {data == null ? null : <TextView text={data.metals.random.styled} />}
         </div>
       </div>
       <div className="w-0 h-0" data-visible={error == null ? undefined : ""}>
-        {children}
+        {errorMsg}
       </div>
     </>
   );

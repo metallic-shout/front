@@ -4,6 +4,7 @@ import { RandomShout } from "@/components/random-shout";
 import { getScopedI18n, getStaticParams } from "@/components/locales/server";
 import { ErrorTopbar, OkTopbar } from "@/components/msg-topbar";
 import { Provider } from "jotai";
+import { RxUpdate } from "react-icons/rx";
 
 interface Props {
   params: { locale: string };
@@ -18,6 +19,7 @@ export default async function ShoutPage({ params: { locale } }: Props) {
       <main className="flex-wrap w-screen h-screen">
         <div className="mx-1/4 max-w-xl max-h-56 px-8">
           <RandomShout>
+            <RxUpdate />
             <ErrorTopbar>{"out!"}</ErrorTopbar>
           </RandomShout>
         </div>
