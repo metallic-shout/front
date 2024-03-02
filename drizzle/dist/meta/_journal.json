@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1708662362043,
-      "tag": "0000_lethal_havok",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1708666246121,
-      "tag": "0001_gray_scream",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1708667967993,
-      "tag": "0002_grey_maverick",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1708679362111,
-      "tag": "0003_tricky_mister_fear",
+      "when": 1709343187602,
+      "tag": "0000_panoramic_wraith",
       "breakpoints": true
     }
   ]
