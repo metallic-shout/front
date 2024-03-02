@@ -4,7 +4,6 @@ const container = `
 absolute
 flex-col
 justify-start
-top-0
 left-0
 h-fit
 transition-transform ease-out
@@ -20,7 +19,7 @@ interface Props {
 
 export const BaseTopbar = ({ children, color }: Props) => {
   return (
-    <div className={` ${color} ${container}`}>
+    <div className={` ${color} ${container} top-[3.7rem]`}>
       <p className={`py-1 h-max`}>{children}</p>
     </div>
   );
