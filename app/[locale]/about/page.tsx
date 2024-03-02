@@ -15,7 +15,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
 
   return (
     <div className="flex-col gap-12">
-      <h1>Metallic Shout</h1>
+      <h1 className="font-bold text-5xl py-[5vw]">Metallic Shout</h1>
       <div className="flex-col grid grid-cols-platte auto-rows-max gap-y-8">
         <AboutPanel gradient="to-about-panel-1" text={aboutT("text1")}>
           {BiHappyHeartEyes}

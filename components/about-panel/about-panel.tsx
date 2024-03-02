@@ -24,12 +24,13 @@ from-60%
 relative
 bottom-[2rem]
 h-10
+-z-10
 `;
 
 export const AboutPanel = ({ children: Child, text, gradient }: Props) => {
   return (
     <>
-      <div className="items-start p-about-panel pl-5">
+      <div className="items-start justify-start p-about-panel pl-[10vw]">
         <p className="whitespace-pre-line">{text}</p>
       </div>
       <div className="relative h-full -z-10">
