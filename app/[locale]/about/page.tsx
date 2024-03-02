@@ -32,7 +32,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
             />
           )}
         </AboutPanel>
-        <AboutPanel gradient="to-about-panel-3" text={aboutT("text3")}>
+        <AboutPanel gradient="to-about-panel-1" text={aboutT("text3")}>
           {({ className }: { className?: string }) => (
             <LuHandMetal
               className={`${className} w-[20rem] h-[20rem] right-[1rem] bottom-[-5rem] -rotate-12`}
@@ -40,7 +40,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
             />
           )}
         </AboutPanel>
-        <AboutPanel gradient="to-about-panel-4" text={aboutT("text4")}>
+        <AboutPanel gradient="to-about-panel-2" text={aboutT("text4")}>
           {({ className }: { className?: string }) => (
             <FaDiscord
               className={`${className} w-[20rem] h-[20rem] right-[0rem] bottom-[-6rem] -rotate-12`}

@@ -38,15 +38,8 @@ export const AboutPanel = ({ children: Child, text, gradient }: Props) => {
           <p className="whitespace-pre-line z-10">{text}</p>
         </div>
         <div className="h-0 w-full relative justify-end">
-          <Child className="absolute text-theme-bg" />
+          <Child className="absolute text-backest" />
         </div>
-        {/* <div className="relative h-full -z-10">
-          <div className={`${gradiention} ${gradient}`}>
-            <div className="relative h-full w-full">
-              <Child className="absolute h-full w-fit text-theme-bg" />
-            </div>
-          </div>
-        </div> */}
         <div className={`${gradientionUnder} ${gradient}`}></div>
       </div>
     </>

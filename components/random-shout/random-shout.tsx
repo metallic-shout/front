@@ -33,14 +33,14 @@ export const RandomShout: React.FC<Props> = ({ children }) => {
       <div
         className={`
           rounded-xl
-          border-primary
+          border-fg-1
           border
           overflow-hidden
           items-stretch
           `}
       >
         <button
-          className="border-r border-primary px-3 bg-panel w-max"
+          className="border-r border-fg-1 px-3 bg-panel w-max"
           onClick={() => fetchMore({ query: GET_RANDOM_METAL })}
         >
           →
