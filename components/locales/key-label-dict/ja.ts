@@ -1,6 +1,6 @@
-import { makeLocale } from "../base";
+import type { Locale } from "../base";
 
-export default makeLocale({
+const locale: Locale = {
   copy: {
     button: "コピー",
     error: "コピーできませんでした。",
@@ -8,8 +8,8 @@ export default makeLocale({
   },
   about: {
     text1: `メタリックシャウト。
-勉強や仕事を頑張っていれば、時々無性に叫びたくなるものです。けれども本当に叫べば周りに悪い意味で注目されてしまうでしょう。
-そんなとき、メタリックシャウトを使ってＳＮＳで叫べば、きっと楽しくなるはず。`,
+            勉強や仕事を頑張っていれば、時々無性に叫びたくなるものです。けれども本当に叫べば周りに悪い意味で注目されてしまうでしょう。
+            そんなとき、メタリックシャウトを使ってＳＮＳで叫べば、きっと楽しくなるはず。`,
     text2:
       "アスキーアートライクな修飾が施されたシャウトを投稿すれば、すぐさま貴方もインターネット通の仲間入りです。",
     text3:
@@ -17,4 +17,6 @@ export default makeLocale({
     text4: `ため込んだ鬱憤を叫びに変えて、メタリックシャウトしましょう！
             貴方のＳＮＳへの投稿を楽しみにしています。`,
   },
-} as const);
+};
+
+export default locale;
