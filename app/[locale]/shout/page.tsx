@@ -2,7 +2,7 @@ import { CopyButton } from "@/components/copy-button";
 import { setStaticParamsLocale } from "next-international/server";
 import { RandomShout } from "@/components/random-shout";
 import { getScopedI18n, getStaticParams } from "@/components/locales/server";
-import { ErrorTopbar, OkTopbar } from "@/components/topbar";
+import { ErrorTopbar, OkTopbar } from "@/components/msg-topbar";
 import { Provider } from "jotai";
 
 interface Props {
