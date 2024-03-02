@@ -10,6 +10,7 @@
     "migrate": "tsx ./drizzle/migrate.ts",
     "migrate:prod": "NODE_ENV=production tsx ./drizzle/migrate.ts",
     "seed": "tsx ./drizzle/seed.ts",
+    "seed:prod": "NODE_ENV=production tsx ./drizzle/seed.ts",
     "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "devDependencies": {

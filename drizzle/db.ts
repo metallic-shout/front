@@ -40,6 +40,7 @@ class DBConnection {
       ]);
       const [{ drizzle }, { sql }] = await loader;
       this.db = drizzle(sql);
+      this.connection = { end: () => {} } as Sql;
       return;
     }
     config({ path: "./.env.dev" });
