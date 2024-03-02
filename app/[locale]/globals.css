@@ -4,22 +4,19 @@
 @tailwind apply;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 214, 219, 220;
-  --background-panel-rgb: 240, 240, 245;
+    --foreground-color: #c0c0c0;
+    --background-color: #0a0a0f;
+    --background-panel-color: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 192, 192, 192;
-    --background-rgb: 10, 10, 15;
-    --background-panel-rgb: 15, 23, 42;
-  }
+:root:has(*[data-detect-theme="light"]){
+  --foreground-color: #000;
+  --background-color:#d6dbdc;
+  --background-panel-color: #f0f0f5;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  @apply text-theme bg-backest;
 }
 
 body:has(dialog[open]){

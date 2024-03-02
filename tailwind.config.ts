@@ -17,10 +17,11 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       backgroundColor: {
-        panel: "rgb(var(--background-panel-rgb))",
+        panel: "var(--background-panel-color)",
+        backest: "var(--background-color)",
       },
       borderColor: {
-        primary: "rgb(var(--foreground-rgb))",
+        primary: "var(--foreground-color)",
       },
       gridTemplateColumns: {
         platte: "100% 0",
@@ -37,7 +38,8 @@ const config: Config = {
         },
       },
       textColor: {
-        "theme-bg": "rgb(var(--background-rgb))",
+        "theme-bg": "var(--background-color)",
+        theme: "var(--foreground-color)",
       },
       padding: {
         "about-panel": "10vw",
