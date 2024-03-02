@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Provider } from "./provider";
 import { getStaticParams } from "@/components/locales/server";
 import { WithToolBox } from "@/components/tool-box";
+import { TopBar } from "./top-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale}>
       <body className={inter.className}>
+        <TopBar />
         <Provider locale={locale}>
           <WithToolBox />
           {children}
