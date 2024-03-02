@@ -4,12 +4,14 @@ import { BiHappyHeartEyes } from "react-icons/bi";
 import { FaLaptopCode } from "react-icons/fa";
 import { LuHandMetal } from "react-icons/lu";
 import { FaDiscord } from "react-icons/fa";
+import { setStaticParamsLocale } from "next-international/server";
 
 interface Props {
   params: { locale: string };
 }
 
-export default async function AboutPage() {
+export default async function AboutPage({ params: { locale } }: Props) {
+  setStaticParamsLocale(locale);
   const aboutT = await getScopedI18n("about");
 
   return (
