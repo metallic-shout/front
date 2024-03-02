@@ -13,6 +13,7 @@ interface Props {
 export default async function ShoutPage({ params: { locale } }: Props) {
   setStaticParamsLocale(locale);
   const copyT = await getScopedI18n("copy");
+  const shoutT = await getScopedI18n("shout");
 
   return (
     <Provider>
@@ -20,7 +21,7 @@ export default async function ShoutPage({ params: { locale } }: Props) {
         <div className="mx-1/4 max-w-xl max-h-56 px-8">
           <RandomShout>
             <RxUpdate />
-            <ErrorTopbar>{"out!"}</ErrorTopbar>
+            <ErrorTopbar>{shoutT("error")}</ErrorTopbar>
           </RandomShout>
         </div>
         <div className="max-w-52 mx-40 h-24">

@@ -15,6 +15,9 @@ const locale: Locale = {
     text4:
       "So ditch the pent-up energy and join the Metallic Shout crew! Let your (metallic) shout be heard! ",
   },
+  shout: {
+    error: "The metallic throat is broken, maybe.",
+  },
 };
 
 export default locale;

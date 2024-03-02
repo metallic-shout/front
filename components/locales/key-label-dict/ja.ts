@@ -17,6 +17,9 @@ const locale: Locale = {
     text4: `ため込んだ鬱憤を叫びに変えて、メタリックシャウトしましょう！
             貴方のＳＮＳへの投稿を楽しみにしています。`,
   },
+  shout: {
+    error: "金属製の喉が壊れてしまったようです。",
+  },
 };
 
 export default locale;
