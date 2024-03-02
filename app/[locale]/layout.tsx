@@ -6,6 +6,9 @@ import { getStaticParams } from "@/components/locales/server";
 import { WithToolBox } from "@/components/tool-box";
 import { TopBar } from "./top-bar";
 import { setStaticParamsLocale } from "next-international/server";
+import { DetectorTheme } from "./detector-theme";
+import { PiMoonFill } from "react-icons/pi";
+import { FiSun } from "react-icons/fi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +29,12 @@ export default function RootLayout({ children, params: { locale } }: Props) {
     <html lang={locale}>
       <body className={inter.className}>
         <Provider>
-          <TopBar currentLocale={locale} />
+          <TopBar currentLocale={locale}>
+            <DetectorTheme>
+              <PiMoonFill className="w-7 h-7" />
+              <FiSun className="w-7 h-7" />
+            </DetectorTheme>
+          </TopBar>
           <WithToolBox />
           {children}
         </Provider>
