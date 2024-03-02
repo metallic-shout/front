@@ -1,5 +1,4 @@
-import { setStaticParamsLocale } from "next-international/server";
-import { getScopedI18n, getStaticParams } from "@/components/locales/server";
+import { getScopedI18n } from "@/components/locales/server";
 import { AboutPanel } from "@/components/about-panel";
 import { BiHappyHeartEyes } from "react-icons/bi";
 import { FaLaptopCode } from "react-icons/fa";
@@ -9,8 +8,8 @@ import { FaDiscord } from "react-icons/fa";
 interface Props {
   params: { locale: string };
 }
-export default async function AboutPage({ params: { locale } }: Props) {
-  setStaticParamsLocale(locale);
+
+export default async function AboutPage() {
   const aboutT = await getScopedI18n("about");
 
   return (
@@ -49,8 +48,4 @@ export default async function AboutPage({ params: { locale } }: Props) {
       </div>
     </div>
   );
-}
-
-export function generateStaticParams() {
-  return getStaticParams();
 }
