@@ -14,11 +14,11 @@ const toggleBoolString = (value: string) => {
 };
 
 const buttonStyle = `
-bg-cyan-950
+bg-panel
 w-16
 h-16
 rounded-xl
-border-sky-800
+border-fg-2-2
 border-4
 border-solid
 p-4
@@ -28,7 +28,7 @@ duration-100
 hover:scale-90
 z-10
 focus:outline
-focus:outline-sky-700
+focus:outline-fg-2-1
 focus:outline-4 
 `;
 
@@ -37,6 +37,12 @@ mx-auto
 mt-[50vh]
 bg-panel
 rounded-xl
+transition-transform
+-translate-y-[100vh]
+flex
+open:translate-y-0
+duration-500
+ease-[cubic-bezier(.44,.97,.24,1.46)]
 `;
 
 const navStyle = `
@@ -55,13 +61,13 @@ export const WithToolBox = () => {
     className: modalStyle,
     children: (
       <nav className="w-full h-full px-[5vw] py-[5vh]">
-        <ul className="flex gap-[5vw] text-gray-300 ml-5">
-          <li className="w-32">
+        <ul className="flex gap-[5vw]">
+          <li className="w-20">
             <Link href="/shout">
               <ShoutSVG />
             </Link>
           </li>
-          <li>
+          <li className="w-fit">
             <Link href="/about">
               <p className="font-bold text-2xl">WHAT</p>
             </Link>
@@ -78,7 +84,7 @@ export const WithToolBox = () => {
   return (
     <>
       {dialogElement}
-      <div className="fixed bottom-20 right-20 w-fit h-fit">
+      <div className="fixed bottom-[10vh] right-[10vw] w-fit h-fit z-20">
         <button
           className={`${buttonStyle}`}
           onClick={onClick}
@@ -89,7 +95,7 @@ export const WithToolBox = () => {
             className={`
             w-full
             h-full
-            text-sky-600
+            text-fg-2-1
             transition-transform
             duration-500
             rotate-[-90deg]

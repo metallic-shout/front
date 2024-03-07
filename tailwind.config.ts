@@ -8,39 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      gridAutoRows: {
-        "about-panel": " max-content",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      backgroundColor: {
-        panel: "rgb(var(--background-panel-rgb))",
-      },
-      borderColor: {
-        primary: "rgb(var(--foreground-rgb))",
-      },
-      gridTemplateColumns: {
-        platte: "100% 0",
-      },
-      gridTemplateRows: {
-        platte: "1fr 5rem",
-      },
-      gradientColorStops: {
+      colors: {
         "about-panel": {
-          1: "#373b4b",
-          2: "#37414b",
-          3: "#374a4b",
-          4: "#374b44",
+          1: "var(--about-panel-1-color)",
+          2: "var(--about-panel-2-color)",
         },
-      },
-      textColor: {
-        "theme-bg": "rgb(var(--background-rgb))",
-      },
-      padding: {
-        "about-panel": "10vw",
+        panel: "var(--background-panel-color)",
+        backest: "var(--background-color)",
+        fg: {
+          1: "var(--foreground-1-color)",
+          2: {
+            1: "var(--foreground-2-1-color)",
+            2: "var(--foreground-2-2-color)",
+          },
+        },
       },
     },
   },
