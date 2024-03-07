@@ -7,41 +7,41 @@ interface Props {
   children: IconType;
 }
 
-const gradiention = `
-absolute
-w-screen
-right-0
-h-full
-bg-gradient-to-br
-from-transparent
-from-60%
-`;
-
 const gradientionUnder = `
 bg-gradient-to-tr
 from-transparent
-from-60%
-relative
-bottom-[2rem]
-h-10
+from-50%
+h-12
 -z-10
+to-90%
 `;
 
 export const AboutPanel = ({ children: Child, text, gradient }: Props) => {
   return (
     <>
-      <div className="items-start justify-start p-about-panel pl-[10vw]">
-        <p className="whitespace-pre-line">{text}</p>
-      </div>
-      <div className="relative h-full -z-10">
-        <div className={`${gradiention} ${gradient}`}>
-          <div className="justify-end items-end h-full">
-            <Child className="h-full w-fit text-theme-bg" />
-          </div>
+      <div className="flex-col h-fit min-h-[50vh] overflow-hidden">
+        <div
+          className={`
+            h-full
+            justify-start
+            pl-[10vw]
+            pt-[10vh]
+            pr-[5vw]
+            bg-gradient-to-br
+            from-transparent
+            from-50%
+            to-90%
+            grow
+            ${gradient}
+        `}
+        >
+          <p className="whitespace-pre-line z-10">{text}</p>
         </div>
+        <div className="h-0 w-full relative justify-end">
+          <Child className="absolute text-backest" />
+        </div>
+        <div className={`${gradientionUnder} ${gradient}`}></div>
       </div>
-      <div className={`${gradientionUnder} ${gradient}`}></div>
-      <div></div>
     </>
   );
 };

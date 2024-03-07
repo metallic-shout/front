@@ -1,6 +1,6 @@
-import { makeLocale } from "../base";
+import type { Locale } from "../base";
 
-export default makeLocale({
+const locale: Locale = {
   copy: {
     button: "Copy shout",
     error: "Failed to insert your clipboard.",
@@ -15,4 +15,9 @@ export default makeLocale({
     text4:
       "So ditch the pent-up energy and join the Metallic Shout crew! Let your (metallic) shout be heard! ",
   },
-} as const);
+  shout: {
+    error: "The metallic throat is broken, maybe.",
+  },
+};
+
+export default locale;
