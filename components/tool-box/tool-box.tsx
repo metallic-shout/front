@@ -37,6 +37,12 @@ mx-auto
 mt-[50vh]
 bg-panel
 rounded-xl
+transition-transform
+-translate-y-[100vh]
+flex
+open:translate-y-0
+duration-500
+ease-[cubic-bezier(.44,.97,.24,1.46)]
 `;
 
 const navStyle = `
