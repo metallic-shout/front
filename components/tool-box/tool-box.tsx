@@ -55,13 +55,13 @@ export const WithToolBox = () => {
     className: modalStyle,
     children: (
       <nav className="w-full h-full px-[5vw] py-[5vh]">
-        <ul className="flex gap-[5vw] ml-5">
-          <li className="w-32">
+        <ul className="flex gap-[5vw]">
+          <li className="w-20">
             <Link href="/shout">
               <ShoutSVG />
             </Link>
           </li>
-          <li>
+          <li className="w-fit">
             <Link href="/about">
               <p className="font-bold text-2xl">WHAT</p>
             </Link>
